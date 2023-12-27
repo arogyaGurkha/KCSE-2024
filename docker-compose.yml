@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  cuda-service:
+    image: gurkhaman/ptm-composition 
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
+    volumes:
+      - .:/workspace
+    stdin_open: true
+    tty: true
+    ipc: host
